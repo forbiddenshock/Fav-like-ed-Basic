@@ -46,7 +46,7 @@ EmDash サイト本体と同期 Worker は別々にデプロイします。WordP
 
 ## 3. favo-like Worker をデプロイ
 
-Actions から **Deploy fav-like-ed to Cloudflare Workers** を実行します。`EmDash site name` はセットアップActionの `site_name` と同じ値にしてください（両方の初期値は `fav-like-ed`）。初回のデプロイとSecrets変更後は、このActionを再実行してください。
+Actions から **Deploy fav-like-ed to Cloudflare Workers** を実行します。`EmDash site name` はセットアップActionの `site_name` と同じ値にしてください（両方の初期値は `fl-ed`）。初回のデプロイとSecrets変更後は、このActionを再実行してください。
 
 `workflow_dispatch` の入力で Cron 間隔（分）、取得対象（Likes / RT / Quotes）、GitHub Markdown出力対象を設定できます。Cronの初期値は15分間隔、X APIからの取得件数は有効な対象ごとに最新5件です。画像が多い場合はWorkerのサブリクエスト数が増えるため、まずは初期値で動作を確認してください。定期取得を使わず、手動で実行する場合はデプロイ後に次のように呼び出します。
 
