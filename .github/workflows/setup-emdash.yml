@@ -9,7 +9,7 @@ on:
       site_name:
         description: "Cloudflare上に作成するEmDashサイト名 (URLの一部になります)"
         required: false
-        default: "fav-like-ed"
+        default: "fl-ed"
       site_title:
         description: "サイトの表示タイトル"
         required: false
@@ -53,7 +53,7 @@ jobs:
         env:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          SITE_NAME: ${{ github.event.inputs.site_name || 'fav-like-ed' }}
+          SITE_NAME: ${{ github.event.inputs.site_name || 'fl-ed' }}
           SITE_TITLE: ${{ github.event.inputs.site_title || 'Favo / Like Log' }}
           SITE_SUBTITLE: ${{ github.event.inputs.site_subtitle || 'X Likes, Reposts, and Quotes archived with EmDash' }}
           D1_NAME: ${{ github.event.inputs.d1_name || 'fav-like-db' }}
@@ -75,7 +75,7 @@ jobs:
             const accountId = (process.env.CLOUDFLARE_ACCOUNT_ID || "").trim();
             const d1Name = (process.env.D1_NAME || "fav-like-db").trim();
             const r2Bucket = (process.env.R2_BUCKET || "fav-like-media").trim();
-            const siteName = (process.env.SITE_NAME || "fav-like-ed").trim();
+            const siteName = (process.env.SITE_NAME || "fl-ed").trim();
             const siteTitle = process.env.SITE_TITLE || "Favo / Like Log";
             const siteSubtitle = process.env.SITE_SUBTITLE || "";
 
@@ -185,4 +185,4 @@ jobs:
             echo "- **サイトURL**: [$DEPLOYED_URL]($DEPLOYED_URL)" >> $GITHUB_STEP_SUMMARY
             echo "- **管理画面URL**: [$DEPLOYED_URL/_emdash/admin]($DEPLOYED_URL/_emdash/admin)" >> $GITHUB_STEP_SUMMARY
           fi
-          echo "- 続けて **「Deploy fav-like-ed to Cloudflare Workers」** を実行してください。`EmDash site name` にはこのActionで指定した `site_name` と同じ値を入力します（初期値: `fav-like-ed`）。URLのSecret登録は不要です。" >> $GITHUB_STEP_SUMMARY
+          echo "- 続けて **「Deploy fav-like-ed to Cloudflare Workers」** を実行してください。`EmDash site name` にはこのActionで指定した `site_name` と同じ値を入力します（初期値: `fl-ed`）。URLのSecret登録は不要です。" >> $GITHUB_STEP_SUMMARY
